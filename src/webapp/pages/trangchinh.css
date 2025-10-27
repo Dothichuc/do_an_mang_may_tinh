@@ -1,0 +1,55 @@
+.sanpham img {
+  max-width: 230px;
+}
+.mainnoibat {
+  min-width: 1000px;
+}
+.noidungnoibat {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  margin: 30px 0;
+}
+.sanpham {
+  /* border: 1px solid black; */
+  height: 110px;
+  width: 18%;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+.mainnoibat {
+  height: 500px;
+}
+.tieudesanpham {
+  text-align: center;
+  font-size: 20px;
+}
+.sanpham td {
+  list-style-type: none;
+  margin: auto;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+}
+.sanpham a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+.sanpham th {
+  height: 300px;
+}
+.anh {
+  text-align: center;
+}
+.themsp {
+  height: 320px;
+  width: 180px;
+}
+button {
+  /* color: rgb(0, 0, 0); */
+  background-color: rgb(255, 0, 0);
+  padding: 7px;
+  border: none;
+  border-radius: 4px;
+}

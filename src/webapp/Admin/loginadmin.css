@@ -1,0 +1,58 @@
+* {
+  margin: 0;
+}
+body {
+  width: 100%;
+  height: 100%;
+  background-image: url(../login/imgdanglogin/nenloginadmin.jpg);
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+.noidungdangnhap {
+  width: 21%;
+  /* height: 100%; */
+  /* border: 1px solid #000; */
+  margin: 100px auto;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 80px 35px 150px;
+  border-radius: 8px;
+}
+.noidungdangnhap h1 {
+  font-size: 40px;
+  color: aliceblue;
+  font-weight: bold;
+  padding-bottom: 20px;
+}
+.taotaikhoan {
+  margin: 10px 0;
+  color: aliceblue;
+}
+.taotaikhoan a {
+  text-decoration: none;
+}
+.taikhoan input {
+  width: 100%;
+  height: 40px;
+  margin: 5px 0;
+  border-radius: 8px;
+  border: none;
+  background-color: rgba(240, 248, 255, 0.9);
+}
+.taikhoan p {
+  font-size: 15px;
+  color: aliceblue;
+}
+.nutdangnhap {
+  text-align: center;
+  margin-top: 20px;
+}
+.nutdangnhap button {
+  background-color: red;
+  width: 100%;
+  height: 40px;
+  border-radius: 8px;
+  border: none;
+}
+.nutdangnhap :hover {
+  background-color: rgb(190, 52, 52);
+}

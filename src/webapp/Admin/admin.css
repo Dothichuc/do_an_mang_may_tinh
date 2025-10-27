@@ -1,0 +1,20 @@
+* {
+  margin: 0;
+}
+.Sidebar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 60px;
+  width: 100%;
+  background-color: rgb(92, 130, 152);
+}
+.Sidebar a {
+  text-decoration: none;
+  padding: 0 5px;
+}
+.Sidebar1 :hover {
+  background-color: rgba(49, 47, 47, 0.234);
+  border-radius: 4px;
+  color: black;
+}

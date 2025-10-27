@@ -1,0 +1,129 @@
+
+body {  
+  background: #f2f2f2; 
+}
+
+.tit_giohang {
+  text-align: center;
+  color: black;
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.hc_giohang {
+  max-width: 900px;
+  margin: auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.ghc {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #eee;
+  padding: 15px 0;
+  align-items: center;
+}
+
+.giohang_trai {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.giohang_trai img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+.thongtin_sp {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.ten_sp {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}
+
+.gia_sp {
+  color: #e53935;
+  font-size: 14px;
+}
+
+.soluong {
+  font-size: 13px;
+  color: #666;
+}
+
+.giohang_phai {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.gia_sp_phai {
+  font-weight: bold;
+  color: #d70018;
+}
+
+.xoa_sp {
+  background: transparent;
+  border: none;
+  color: #d70018;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.xoa_sp:hover {
+  color: #ff3d3d;
+}
+
+.tam_tinh {
+  text-align: right;
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #222;
+}
+
+.hoatdong_xoa {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px;
+}
+
+.btn-clear,
+.btn-checkout {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-clear {
+  background-color: #f44336;
+  color: white;
+}
+
+.thanh_toan {
+  background-color: #388e3c;
+  color: white;
+}
+
+.giohang_trong {
+  text-align: center;
+  padding: 40px 0;
+  font-size: 18px;
+  color: #888;
+}

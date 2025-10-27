@@ -1,0 +1,110 @@
+body {
+  background-color: rgb(239, 241, 239);
+}
+.trangchinh {
+  height: 732px;
+  width: 60%;
+  margin: auto;
+  display: flex;
+}
+.main1 {
+  height: 732px;
+  width: 40%;
+}
+.anh {
+  height: 480px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  background-color: white;
+}
+.anh img {
+  max-width: 90%;
+  margin: 36px 0;
+}
+.main2 {
+  height: 732px;
+  width: 58%;
+  margin-left: 2%;
+}
+.tenvagia {
+  height: 194px;
+  width: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  margin-bottom: 6px;
+  background-color: white;
+}
+.giasp {
+  padding-left: 20px;
+}
+.ten {
+  padding: 20px 0 0 25px;
+  font-size: 20px;
+  font-weight: bold;
+}
+.giasp {
+  padding-left: 25px;
+}
+.gia {
+  color: red;
+  /* padding: 0 10px; */
+  font-size: 30px;
+}
+.giasp span {
+  font-size: 20px;
+  padding-top: 10px;
+}
+.nutmuahang {
+  text-align: center;
+  margin: 38px auto;
+}
+.nutmuahang a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  background-color: red;
+  padding: 13px 50px;
+  border-radius: 5px;
+}
+.noidungmota {
+  height: 232px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  background-color: white;
+  margin-top: 15px;
+}
+.thanhtt {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+.quangcao {
+  height: 530px;
+  /* background-color: rgb(69, 111, 148); */
+}
+.anhquangcao {
+  height: 100px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  border-radius: 8px;
+  background-image: url(img/anhtragop.jpg);
+  background-size: 100% 110px;
+  margin: 10px 0;
+}
+.videoquangcao {
+  height: 415px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  background-color: white;
+}
+.videoquangcao iframe {
+  width: 96%;
+  height: 360px;
+  margin: 25px 2%;
+  border-radius: 8px;
+}
+/* .quangcao iframe {
+  width: 96%;
+  height: 250px;
+  margin: 43px 2%;
+  border-radius: 8px;
+} */
