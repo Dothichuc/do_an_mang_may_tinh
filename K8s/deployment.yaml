@@ -16,7 +16,8 @@ spec:
     spec:
       containers:
       - name: phpapp
-        image: mydockerhub/phpapp:latest
+        # placeholder image; Jenkins will update this to correct tag
+        image: yourdockerhubusername/phpapp:placeholder
         ports:
         - containerPort: 80
         env:
@@ -28,5 +29,17 @@ spec:
           valueFrom:
             secretKeyRef:
               name: mysql-secret
-              key: password
+              key: mysql-root-password
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 10
+          periodSeconds: 20
 

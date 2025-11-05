@@ -1,42 +1,63 @@
+# Secret: MySQL root password
 apiVersion: v1
 kind: Secret
 metadata:
   name: mysql-secret
 type: Opaque
-data:
-  password: cm9vdHBhc3N3b3Jk   # base64 của "rootpassword"
+stringData:
+  mysql-root-password: rootpassword   # <-- đổi mật khẩu theo ý bạn
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mysql-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mysql-deployment
+  labels:
+    app: mysql
 spec:
+  replicas: 1
   selector:
     matchLabels:
       app: mysql
-  replicas: 1
   template:
     metadata:
       labels:
         app: mysql
     spec:
+      # uncomment and set if you want to pin pod to node that has /mnt/mysql-data
+      # nodeSelector:
+      #   kubernetes.io/hostname: worker1
       containers:
       - name: mysql
-        image: mysql:8
+        image: mysql:8.0
         env:
         - name: MYSQL_ROOT_PASSWORD
           valueFrom:
             secretKeyRef:
               name: mysql-secret
-              key: password
+              key: mysql-root-password
         ports:
         - containerPort: 3306
         volumeMounts:
-        - name: mysql-pv
+        - name: mysql-storage
           mountPath: /var/lib/mysql
       volumes:
-      - name: mysql-pv
-        emptyDir: {}
+      - name: mysql-storage
+        persistentVolumeClaim:
+          claimName: mysql-pvc
+
 ---
 apiVersion: v1
 kind: Service
@@ -46,7 +67,8 @@ spec:
   selector:
     app: mysql
   ports:
-    - protocol: TCP
+    - name: mysql
       port: 3306
       targetPort: 3306
   clusterIP: None
+
