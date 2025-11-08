@@ -17,6 +17,7 @@ pipeline {
         stage('Prepare Image Tag') {
             steps {
                 script {
+                    // Lấy commit hash rút gọn
                     def COMMIT = sh(script: "git rev-parse --short HEAD", returnStdout: true).trim()
                     env.IMAGE_TAG = "${IMAGE_REPO}:${COMMIT}"
                     echo "Image to build: ${env.IMAGE_TAG}"
@@ -44,17 +45,22 @@ pipeline {
         stage('Deploy to Kubernetes') {
             steps {
                 withCredentials([file(credentialsId: 'kubeconfig-k8s', variable: 'KCFG')]) {
-                    sh """
-                        kubectl --kubeconfig=$KCFG get pods
+                    script {
+                        // Đảm bảo PV được tạo trước
+                        sh "kubectl --kubeconfig=$KCFG apply -f K8s/mysql-pv.yaml --validate=false"
+                        sh "kubectl --kubeconfig=$KCFG apply -f K8s/mysql.yaml"
+                        sh "kubectl --kubeconfig=$KCFG apply -f K8s/service.yaml"
 
-                        kubectl apply -f K8s/mysql-pv.yaml
-                        kubectl apply -f K8s/mysql.yaml
-                        kubectl apply -f K8s/service.yaml
-                        kubectl apply -f K8s/deployment.yaml
+                        // Thay image trong deployment.yaml trước khi apply
+                        sh """
+                            sed -i 's|image: ${IMAGE_REPO}:placeholder|image: ${IMAGE_TAG}|g' K8s/deployment.yaml
+                            kubectl --kubeconfig=$KCFG apply -f K8s/deployment.yaml
+                        """
 
-                        kubectl set image deployment/phpapp-deployment phpapp=${env.IMAGE_TAG} --record
-                        kubectl rollout status deployment/phpapp-deployment --timeout=120s
-                    """
+                        // Đảm bảo deployment update image và rollout thành công
+                        sh "kubectl --kubeconfig=$KCFG set image deployment/phpapp-deployment phpapp=${IMAGE_TAG} --record"
+                        sh "kubectl --kubeconfig=$KCFG rollout status deployment/phpapp-deployment --timeout=120s"
+                    }
                 }
             }
         }
@@ -69,3 +75,4 @@ pipeline {
         }
     }
 }
+
