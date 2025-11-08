@@ -47,10 +47,10 @@ pipeline {
                     sh """
                         kubectl --kubeconfig=$KCFG get pods
 
-                        kubectl apply -f k8s/mysql-pv.yaml
-                        kubectl apply -f k8s/mysql.yaml
-                        kubectl apply -f k8s/service.yaml
-                        kubectl apply -f k8s/deployment.yaml
+                        kubectl apply -f K8s/mysql-pv.yaml
+                        kubectl apply -f K8s/mysql.yaml
+                        kubectl apply -f K8s/service.yaml
+                        kubectl apply -f K8s/deployment.yaml
 
                         kubectl set image deployment/phpapp-deployment phpapp=${env.IMAGE_TAG} --record
                         kubectl rollout status deployment/phpapp-deployment --timeout=120s
