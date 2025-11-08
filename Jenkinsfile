@@ -45,7 +45,7 @@ pipeline {
             steps {
                 withCredentials([file(credentialsId: 'kubeconfig-k8s', variable: 'KCFG')]) {
                     sh """
-                        export KUBECONFIG=$KCFG
+                        export KUBECONFIG=/var/jenkins_home/kubeconfig
 
                         kubectl apply -f k8s/mysql-pv.yaml
                         kubectl apply -f k8s/mysql.yaml
