@@ -4,11 +4,8 @@ FROM php:8.2-apache
 # Set working directory
 WORKDIR /var/www/html
 
-# Copy index.php lên root để Apache load trực tiếp
-COPY src/webapp/login/index.php /var/www/html/index.php
-
-# Copy các file còn lại
-COPY src/webapp /var/www/html/webapp
+# Copy toàn bộ source code web vào container
+COPY src/webapp/ /var/www/html/
 
 # Cài đặt các package cần thiết và PHP extensions
 RUN apt-get update \
