@@ -17,7 +17,7 @@ spec:
       containers:
       - name: phpapp
         # placeholder image; Jenkins will update this to correct tag
-        image: dothichuc/phpapp:2332c00
+        image: dothichuc/phpapp:c18228e
         ports:
         - containerPort: 80
         env:
