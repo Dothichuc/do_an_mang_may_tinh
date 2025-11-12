@@ -3,7 +3,7 @@ FROM php:8.2-apache
 WORKDIR /var/www/html
 
 # Copy toàn bộ source code web vào container
-COPY src/webapp/ /var/www/html/
+COPY src/webapp /var/www/html/webapp
 
 # Cài đặt PHP extensions và package cần thiết
 RUN apt-get update \
