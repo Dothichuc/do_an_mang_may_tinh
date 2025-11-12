@@ -1,8 +1,7 @@
 <?php
 session_start();  // bắt buộc phải ở đầu file, trước HTML
 
-include(__DIR__ . '/Admin/connect.php');
-
+include(__DIR__ . '/../Admin/connect.php');
 
 if(isset($_POST['username']) && isset($_POST['password'])){
     $username = $_POST['username'];
@@ -47,4 +46,3 @@ if(isset($_POST['username']) && isset($_POST['password'])){
     </div>
 </body>
 </html>
-
