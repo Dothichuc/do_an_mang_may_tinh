@@ -1,16 +1,21 @@
 <?php
-$servername = "localhost";
+$servername = "mysql-service";  // tên service trong k8s
 $username = "root";
-$password = "";
+$password = "rootpassword";     // mật khẩu đúng trong secret
 $database = "webdienthoai";
-//doi port thi them $port =" port";
 
-// Create connection
-$conn = mysqli_connect($servername, $username,$password,$database );
+// Nếu cần đổi port MySQL, ví dụ 3306 mặc định
+// $port = 3306;
 
-// Check connection
+// Tạo kết nối
+$conn = mysqli_connect($servername, $username, $password, 
+$database /*, $port*/ );
+
+// Kiểm tra kết nối
 if (!$conn) {
-  die("Connection failed: " . mysqli_connect_error());
+    die("Connection failed: " . mysqli_connect_error());
 }
 // echo "Connected successfully";
+
+?>
 
