@@ -17,7 +17,8 @@ spec:
       containers:
       - name: phpapp
         # placeholder image; Jenkins will update this to correct tag
-        image: dothichuc/phpapp:f88f954
+        image: dothichuc/phpapp:latest 
+        imagePullPolicy: Always  
         ports:
         - containerPort: 80
         env:
@@ -32,13 +33,13 @@ spec:
               key: mysql-root-password
         readinessProbe:
           httpGet:
-            path: /login/dangnhap.php
+            path: /webapp/login/dangnhap.php
             port: 80
           initialDelaySeconds: 5
           periodSeconds: 10
         livenessProbe:
           httpGet:
-            path: /login/dangnhap.php
+            path: /webapp/login/dangnhap.php
             port: 80
           initialDelaySeconds: 10
           periodSeconds: 20
