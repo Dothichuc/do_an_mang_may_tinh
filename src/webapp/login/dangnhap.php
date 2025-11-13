@@ -1,4 +1,5 @@
 <?php
+ob_start();
 session_start();  // bắt buộc phải ở đầu file, trước HTML
 
 include(__DIR__ . '/../Admin/connect.php');
@@ -10,14 +11,13 @@ if(isset($_POST['username']) && isset($_POST['password'])){
     $result = mysqli_query($conn, $sql);
     if(mysqli_num_rows($result) > 0){
         $_SESSION["username"] = $username;
-        header('location:../pages/home.php?page_layout=trangchinh');
+        header('Location:../pages/home.php?page_layout=trangchinh');
         exit(); // đảm bảo script dừng sau redirect
     } else {
         echo "Tên đăng nhập hoặc mật khẩu không chính xác";
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
