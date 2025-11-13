@@ -17,6 +17,11 @@ RUN chown -R www-data:www-data /var/www/html
 
 EXPOSE 80
 
-# Chỉnh DocumentRoot của Apache thành /var/www/html/webapp
-RUN sed -i 's|DocumentRoot /var/www/html|DocumentRoot /var/www/html/webapp|' /etc/apache2/sites-available/000-default.conf \
+#  Giữ DocumentRoot mặc định /var/www/html
+#    nhưng cấu hình thêm alias để webapp chạy đúng thư mục
+RUN echo '<Directory /var/www/html/webapp>\n\
+    AllowOverride All\n\
+    Require all granted\n\
+</Directory>\n' >> /etc/apache2/apache2.conf \
     && echo 'ServerName localhost' >> /etc/apache2/apache2.conf
+
