@@ -16,7 +16,7 @@ RUN apt-get update \
 RUN chown -R www-data:www-data /var/www/html
 
 EXPOSE 80
-# Chỉnh DocumentRoot của Apache
-RUN sed -i 's|DocumentRoot /var/www/html|DocumentRoot /var/www/html/login|' /etc/apache2/sites-available/000-default.conf \
-    && echo 'ServerName localhost' >> /etc/apache2/apache2.conf
 
+# Chỉnh DocumentRoot của Apache thành /var/www/html/webapp
+RUN sed -i 's|DocumentRoot /var/www/html|DocumentRoot /var/www/html/webapp|' /etc/apache2/sites-available/000-default.conf \
+    && echo 'ServerName localhost' >> /etc/apache2/apache2.conf
