@@ -1,3 +1,26 @@
+<?php
+session_start();
+include('connect.php');
+
+$error = "";
+
+// Xử lý đăng nhập trước khi xuất HTML
+if (isset($_POST['username']) && isset($_POST['password'])) {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    $sql = "SELECT * FROM `user_admin` WHERE tai_khoan='$username' AND mat_khau='$password'";
+    $result = mysqli_query($conn, $sql);
+
+    if (mysqli_num_rows($result) > 0) {
+        $_SESSION["username"] = $username;
+        header('Location: trangadmin.php?page_layout=quanlydanhmuc');
+        exit;
+    } else {
+        $error = "Tên đăng nhập hoặc mật khẩu không chính xác";
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -31,21 +54,13 @@
           </div>
         </form>
         <?php 
-            include('connect.php');
-          if(isset($_POST['username']) && isset($_POST['password'])){
-            $username =$_POST['username'];
-            $password =$_POST['password'];
-            $sql= "SELECT * FROM `user_admin` where  tai_khoan ='$username' and  mat_khau ='$password'";
-            $result =mysqli_query($conn,$sql);
-            if(mysqli_num_rows($result) >0)
-              { session_start(); 
-              $_SESSION["username"] = $username;
-             header('location: trangadmin.php?page_layout=quanlydanhmuc');//
-            } else{ echo "Tên đăng nhập hoặc mật khẩu không chính xác";
-             } 
-          } 
+          // Hiển thị lỗi
+          if(!empty($error)) {
+              echo '<p style="color:red;">'.$error.'</p>';
+          }
         ?>
       </div>
     </div>
   </body>
 </html>
+
