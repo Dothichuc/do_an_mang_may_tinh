@@ -2,10 +2,9 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: phpapp-deployment
-  labels:
-    app: phpapp
+  namespace: test
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: phpapp
@@ -16,9 +15,7 @@ spec:
     spec:
       containers:
       - name: phpapp
-        # placeholder image; Jenkins will update this to correct tag
-        image: dothichuc/phpapp:latest 
-        imagePullPolicy: Always  
+        image: dothichuc/phpapp:latest
         ports:
         - containerPort: 80
         env:
@@ -31,16 +28,3 @@ spec:
             secretKeyRef:
               name: mysql-secret
               key: mysql-root-password
-        readinessProbe:
-          httpGet:
-            path: /webapp/login/dangnhap.php
-            port: 80
-          initialDelaySeconds: 5
-          periodSeconds: 10
-        livenessProbe:
-          httpGet:
-            path: /webapp/login/dangnhap.php
-            port: 80
-          initialDelaySeconds: 10
-          periodSeconds: 20
-
